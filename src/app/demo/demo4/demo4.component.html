@@ -1,0 +1,9 @@
+<section>
+    <h2>Le formateur du jour sera {{ trainerOfTheDay }}</h2>
+    <div class="trainers">
+        @for (trainer of trainers; track trainer.id) {
+            <!-- [trainer] = "variable" permet dans le composant app-trainer-card de mettre la variable dans l'@Input-->
+            <app-trainer-card [trainer]="trainer" (onSelected)="setupTrainer($event)"></app-trainer-card>
+        }
+    </div>
+</section>

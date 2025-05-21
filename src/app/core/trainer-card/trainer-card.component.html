@@ -1,0 +1,11 @@
+
+@if (trainer) {
+    <div class="card">
+        <p>{{ trainer.firstName}} {{ trainer.lastName}} @if (onVacation()) { 🌴 }</p>
+        <img [src]="'images/' + trainer.avatar" [alt]=" 'avatar de ' + trainer.firstName">
+        <p>👶 {{ (trainer.birthDate | date : 'dd/MM/yyyy') ?? 'Pâné'}}</p>
+        <button (click)="selectTrainer()" [disabled]="!isAvailable()">Sélectionner</button>
+    </div>
+}
+
+
