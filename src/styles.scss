@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+//Mini reset css
+//J'enlève le margin et le padding
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app{
+    display: flex;
+    min-height: 100vh;
+    background-color: whitesmoke;
+
+}
+
+.navbar {
+    background-color: lightsteelblue;
+    min-height: 100%;
+    width: 20%;
+    padding: 1rem 2rem;
+
+    h2{
+        margin: 1rem 0;
+    }
+
+    ul{
+        list-style: none;
+        
+    }
+
+
+    }
+    a{
+            color: darkblue;
+            text-decoration: none;
+            
+}
+
+.demo{
+    padding: 1rem 2rem;
+
+    h1{
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        color: darkblue;
+    }
+
+    h2{
+        margin: 0.5rem 0;
+        color: darkblue;
+    }
+    h3{
+        color: darkseagreen;
+        margin: 0.5rem 0;
+    }
+}
+
+
+
+

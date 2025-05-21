@@ -1,0 +1,29 @@
+<!--
+Ennoncé :
+1) Créer un nouveau composant exo2 et faire en sorte qu'on puisse y accéder via le lien Exo 2 : Timer
+2) Dans votre composant Exo2, vous devrez avoir une variable pour stocker le nombre de secondes écoulées (au début 0)
+3) Afficher sur la page html ce nombre de secondes, un bouton pour lancer le timer, un bouton pour mettre en pause le timer et un bouton pour remettre à 0 le timer.
+4) Faire en sorte que les boutons fonctionnent
+5) Faire en sorte que si le timer est lancé on ne puisse plus appuyer sur play (juste faire pause et reset). Si le timer est en pause, on ne peut pas appuyer sur pause (que play et reset). Si le timer est déjà à 0, on ne peut pas reset (que play et pause)
+
+(Jusqu'ici révision -> Binding (property + event + attribute))
+
+6) Créer un pipe qui reçoit un nombre de secondes et qui renvoie deux formats différents (un court et un long) :
+XX minutes et XX secondes
+XX : XX-->
+
+
+<div class="container">
+  <h1>{{ nbSec | convertTimer : pipeOption }}</h1>
+
+  <button (click)="demarrer()" [disabled]="isRunning === true">Start</button>
+  <button (click)="pause()" [disabled]="isRunning === false">Pause</button>
+  <button (click)="reset()" [disabled]="nbSec === 0">Reset</button>
+  <br><br>
+  <span>Format : </span>
+    <select [(ngModel)]="pipeOption" name="pipeoption" id="">
+        <option value="long">long</option>
+        <option value="court">court</option>
+    </select>
+  
+</div>

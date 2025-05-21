@@ -1,0 +1,34 @@
+<section class="demo">
+    <h1>Demo 1 : Les bindings</h1>
+    <p>Le binding c'est le concept de pouvoir relier la partie code (TS) avec la partie HTLM</p>
+
+    <h2>Property Binding</h2>
+    <p>Permet de relier une propriété présente dans notre composant avec notre HTML</p>
+
+    <h3>One-Way Binding</h3>
+    <p>Permet d'afficher une propriété dans la page (celui que vous allez le plus utiliser)</p>
+    <p>Exemple : {{ prenom }}</p>
+
+    <h3>Two-Way Binding</h3>
+    <p>Permet de modifier la valeur d'une propriété dans la page</p>
+    <!-- Pour pouvoir utiliser ngModel il faut faire un import dans le component.ts -->
+    <p>Exemple : <input [(ngModel)]="prenom" type ="text"></p>
+
+    <h2>Event Binding</h2>
+    <p>Permet de relier une fonction présente dans notre composant (TS) avec un évènement dans notre HTML</p>
+    <p>
+        <input [(ngModel)]="nombre" type="number">
+        <button (click)="verifierPair()">Vérifier</button>
+        <span>{{ resultatPair }}</span>
+    </p>
+
+    <h2>Attribute Binding</h2>
+    <p>Permet de relier une attribut htlm avec une propriéte  présente dans le composant (TS)</p>
+    <p>
+        <img width="250px" [src]="sourceImg" [alt]="texteAlternarftifImg"><br>
+        <input [(ngModel)]="nombre" type="number" [disabled]="nombre % 2 === 0">
+    </p>
+
+
+</section>
+

@@ -1,0 +1,200 @@
+<section class="demo">
+    <h1>Demo 3 : Les directives ➰</h1>
+    <p>Elles nous servent à apporter encore un peu plus de logique. Par exemple appliquer du style ou non, afficher du
+        contenu contextuellement, afficher une liste, etc</p>
+
+    <h2>🖌️ Les components directives</h2>
+    <h3>• ngModel : <a routerLink="/demo1">(voir bindings)</a> </h3>
+    <p>Servait pour property binding 2 way</p>
+
+    <h3>• ngStyle :</h3>
+    <p>Permet créer du style inline relié à une propriété (attention, ça reste du style inline, si on peut passer par du
+        css c'est mieux)</p>
+
+    <div>
+        <p [ngStyle]="{color: textColor}">Une phrase à styliser.</p>
+        <button (click)="changeTextColor()" class="btn">Changer couleur</button>
+    </div>
+
+    <code ngNonBindable>
+        <span class="comment">//Dans la partie HTML</span>
+        &lt;p [ngStyle]="&#123;color: textColor&#125;" &gt; Une phrase à styliser. &lt;/p&gt; <br>
+        <span class="comment">//Où textColor est une variable qu'on va modifier dans laquelle est stockée une couleur (ex: darkred)</span>
+    </code>
+
+    <h3>• ngClass :</h3>
+    <p>Permet d'associer une classe CSS à une expression booléenne pour savoir si elle s'applique ou non</p>
+
+    <p [ngClass]="{'colere-0': niveauColere === 0, 'colere-1' : niveauColere === 1, 'colere-2': niveauColere === 2, 'colere-3' : niveauColere >= 3}"
+        (click)="insulter()">Baromètre de colère (cliquer pour insulter)</p>
+
+    <code ngNonBindable>
+        <span class="comment">//Dans la partie HTML</span>
+        &lt;p <br> &nbsp;&nbsp;[ngClass]="&#123;'colere-0': niveauColere === 0, 'colere-1' : niveauColere === 1, 'colere-2': niveauColere === 2, 'colere-3' : niveauColere >= 3&#125;"<br> &nbsp;&nbsp;(click)="insulter()"&gt; Baromètre de colère (cliquer pour insulter) &lt;/p&gt; <br>
+        <span class="comment">//Où insulter() augmente de 1 la variable niveauColere</span>
+    </code>
+
+    <h2>🧱 Les structurals directives (rework depuis la version 16)</h2>
+    <h3>ngIf → &commat;if <button class="btn" (click)="faireJour = !faireJour">Jour/Nuit</button></h3>
+
+    <div class="flex-row">
+        <div>
+            <h4>Avec le ngIf :</h4>
+            <p *ngIf="faireJour; else night">Jour 🌞</p>
+            <!-- Comme le else avec un ngTemplate n'était pas très pratique à mettre en place, beauoup faisaient un nouveau ngIf mais avec la condition inversée  -->
+            <!-- <p *ngIf="!faireJour">Nuit 🌚</p> -->
+
+            <ng-template #night>
+                <p>Nuit 🌚</p>
+            </ng-template>
+
+            <code ngNonBindable>
+                <span class="comment">//Dans la partie HTML</span>
+                &lt;p *ngIf="faireJour; else night" &gt; Jour 🌞 &lt;/p&gt; <br>
+                &lt;ng-template #night&gt; <br>
+                &nbsp;&nbsp;&nbsp;&lt;p&gt; Nuit 🌚 &lt;/p&gt;<br>
+                &lt;/ng-template&gt; <br>
+                 <br>
+            </code>
+        </div>
+
+        <div>
+            <h4>Avec le &commat;if :</h4>
+            @if(faireJour) {
+            <p>Jour 🌞</p>
+            }@else {
+            <p>Nuit 🌚</p>
+            }
+
+            <code ngNonBindable>
+                <span class="comment">//Dans la partie HTML</span>
+                &commat;if(faireJour) &#123;<br>
+                &nbsp;&nbsp;&nbsp;&lt;p&gt; Jour 🌞 &lt;/p&gt; <br>
+                &#125;<br>
+                &commat;else&#123;<br>
+                &nbsp;&nbsp;&nbsp;&lt;p&gt; Nuit 🌚 &lt;/p&gt;<br>
+                &#125;<br>
+            </code>
+        </div>
+    </div>
+
+
+    <h3>ngFor → &commat;for </h3>
+    <p>Permet de parcourir des listes pour générer un affichage automatique (voire dynamique)</p>
+
+    <div class="flex-row">
+        <div>
+            <h4>Avec le ngFor :</h4>
+
+            <ul *ngIf="formateurs.length > 0">
+                <li *ngFor="let formateur of formateurs"> {{ formateur }} </li>
+            </ul>
+            <p *ngIf="formateurs.length === 0">Pas de formateurs</p>
+
+            <p>Nous devrons tester nous même avec un if si la liste est vide pour afficher un message si c'est le cas.</p>
+
+            <code ngNonBindable>
+                <span class="comment">//Dans la partie HTML</span>
+                &lt;ul&gt; <br>
+                &nbsp;&nbsp;&nbsp;&lt;li *ngFor="let formateur of formateurs" &gt; <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ formateur }} <br>
+                &nbsp;&nbsp;&nbsp;&lt;/li&gt; <br>
+                &lt;/ul&gt; <br>
+                &lt;p *ngIf="formateurs.length === 0" &gt; Pas de formateurs &lt;/p&gt;
+            </code>
+        </div>
+
+        <div>
+            <h4>Avec le &commat;for :</h4>
+            <ul>
+                <!-- idealement quand on aura un objet plus complexe, on va track sur l'id -->
+                @for(formateur of formateurs; track formateur){
+                <li> {{ formateur }} </li>
+                }@empty {
+                <!-- @empty -> contenu affiché si le tableau sur lequel on fait un for est vide -->
+                <p>Pas de formateurs</p>
+                }
+            </ul>
+             <p>Avec cette méthode, nous serons obligés de renseigner un tracker afin d'optimiser le rendu. Seulement la valeur modifiée sera re-rendue à la place de toute la liste si notre liste est modifiée.</p>
+
+             <code ngNonBindable>
+                <span class="comment">//Dans la partie HTML</span>
+                &lt;ul&gt; <br>
+                &nbsp;&nbsp;&nbsp;&commat;for(formateur of formateurs; track formateur)&#123;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;{{ formateur }}&lt;/li&gt;<br>
+                &nbsp;&nbsp;&nbsp;&#125;<br>
+                &nbsp;&nbsp;&nbsp;&commat;else&#123;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; Pas de formateurs &lt;/p&gt;<br>
+                &nbsp;&nbsp;&nbsp;&#125;<br>
+                &lt;/ul&gt; <br>
+                
+            </code>
+        </div>
+    </div>
+
+
+
+
+    <h3>ngSwitch → &commat;switch </h3>
+    <h4>Avec le ngSwitch : </h4>
+
+    <div [ngSwitch]="jourDeLaSemaine">
+        <div *ngSwitchCase="1">Lundi : Des patates</div>
+        <div *ngSwitchCase="2">Mardi : Raviolis</div>
+        <div *ngSwitchCase="3">Mercredi : Burger</div>
+        <div *ngSwitchCase="4">Jeudi : Pizzas</div>
+        <div *ngSwitchCase="5">Vendredi : Frites</div>
+        <div *ngSwitchCase="6">Samedi : Indien</div>
+        <div *ngSwitchCase="0">Dimanche : Poulet-Compote</div>
+        <div *ngSwitchDefault>[Erreur] Ce jour n'existe pas</div>
+    </div>
+
+    <h4>Avec le &commat;switch : </h4>
+    @switch (jourDeLaSemaine) {
+    @case (1) {
+    <div>Lundi : Des patates</div>
+    }
+    @case (2) {
+    <div>Mardi : Raviolis</div>
+    }
+    @case (3) {
+    <div>Mercredi : Burger</div>
+    }
+    <!-- etc j'ai la flemme -->
+    @default {
+    <div>[Erreur] Ce jour n'existe pas</div>
+    }
+    }
+
+    <h2>Et si on les combinait pour un petit récap ?</h2>
+    <div class="pizzas">
+        @for( product of products; track product.id ){
+
+        <div class="card">
+            @if(product.promo){
+            <div class="tag">Promo</div>
+            }
+
+            <div class="card-top">
+                <img [src]="product.image" [alt]="product.name">
+                <p class="title">{{product.name}}</p>
+            </div>
+
+            <div class="card-bot">
+                <span>Prix :</span>
+                <div class="prices">
+                    @if(product.promo){
+                    <p class="promo">{{product.pricePromo | number : '0.2' }}€</p>
+                    }
+                    <p [ngClass]="{'price-before': product.promo}">{{product.price | number : '0.2'}}€</p>
+                </div>
+            </div>
+
+        </div>
+        }
+
+    </div>
+
+    <h2>Les customs directives</h2>
+</section>
+

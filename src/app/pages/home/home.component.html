@@ -1,0 +1,15 @@
+<h1>Demo Angular</h1>
+<div>
+    <br>
+    <!-- Binding One Way -->
+    Nous sommes le {{ today }}
+</div>
+
+<div>
+    <br>
+    <p>Quel est votre petit nom ? </p>
+    <!-- Binding Two Way -->
+    <input [(ngModel)]="prenom" type="text" [disabled]="bonjour != ''">
+    <button (click)="direBonjour()" [disabled]="bonjour != ''">Valider</button>
+    <p>{{bonjour}}</p>
+</div>

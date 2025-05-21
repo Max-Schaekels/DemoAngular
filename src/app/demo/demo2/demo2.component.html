@@ -1,0 +1,41 @@
+<section class="demo">
+    <h2>Demo 2 : Les pipes</h2>
+    <p>Propre à angular, ils permettent de formatter les données à l'afichage.</p>
+
+    <h3>Les pipes déjà existants : </h3>
+    <h4>Les pipes string</h4>
+    <p>Sans pipe : {{bonjour}}</p>
+    <p>En majuscule : {{bonjour | uppercase }}</p>
+    <p>En minuscule : {{bonjour | lowercase }}</p>
+    <p>En title case : {{bonjour | titlecase }}</p>
+
+    <h4>Les pipes number</h4>
+    <p>Un menu burger cheese : </p>
+    <p>Sans pipe : {{prix}}</p>
+    <!-- Le pupe number attend un paramètre 'X.Y-Z' où X est le nombre minimum de chiffre avant la virgule. Y est le minimum après la virgule et Z est le maximum après la vigurle -->
+    <p>Avec pipe pour arrondir : {{prix | number : '0.0-2'}}</p>
+
+    <h4>Les pipes de monnaie</h4>
+    <p>Avec pipe de monnaie : {{ prix | currency }}</p>
+    <p>Avec pipe de monnaie : {{ prix | currency : 'EUR' }}</p>
+
+    <h4>Les pipes de date</h4>
+    <p>Sans pipe : {{ajd}} </p>
+    <p>Avec pipe (sans param) : {{ajd | date}} </p>
+    <p>Avec pipe (avec param basique): {{ajd | date : 'dd/MM/yyyy'}} </p>
+
+    <h4>Le pipe jsn</h4>
+    <!-- Utile pour debut-->
+     <p> {{ aude | json }}</p>
+
+    <h3>Créer ses propres pipes : </h3>
+    <input type="number" [(ngModel)]="temp">
+    <select [(ngModel)]="tempOption">
+        <option value="c-f"> Celsius vers Fahrenheit</option>
+        <option value="f-c">Fahrenheit vers Celsius</option>
+        <option value="c-k">Celsius vers Kelvin</option>
+    </select>
+    <p>{{ temp | convertTemp : tempOption | number : '0.0-2'}}</p>
+    <p>Note : Vous pouvez enchainer les pipes tant que les formats sont respectés (ex ici notre pipe s'utilise sur un number et renvoie un number donc on peut uitlser le pipe number (decimal))</p>
+    
+</section>

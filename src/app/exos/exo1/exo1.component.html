@@ -1,0 +1,30 @@
+<h1>Exo 1 :</h1>
+
+<span>Nom personnage : </span>
+<input [(ngModel)]="nompersos" type="text">
+
+<span>Niveau personnage : </span>
+<input [(ngModel)]="niveau" type="number">
+
+<span>Race : </span>
+<select [(ngModel)]="race" name="classepersos" id="">
+    <option value="Elfe">Elfe</option>
+    <option value="Humain">Humain</option>
+    <option value="Nain">Nain</option>
+</select>
+
+<span>Classe : </span>
+<select [(ngModel)]="classe" name="classepersos" id="">
+    <option value="Mage">Mage</option>
+    <option value="Guerrier">Guerrier</option>
+    <option value="Guerrier">Archer</option>
+</select>
+
+<span>Url de l'immage : </span>
+<input [(ngModel)]="img"  type="url" name="image" id="url">
+
+
+<button (click)="genererFiche()">Fiche Personnage</button>
+
+<img width="250px" [src]="imageFiche" [alt]="texteAlternarftifImg">
+<p>{{fiche}}</p>
