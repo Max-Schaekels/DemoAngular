@@ -1,0 +1,30 @@
+<section class="demo">
+    <h1>Demo 5 : Services et Injections</h1>
+
+    <h2>Gestion des formateurs :</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (trainer of trainers; track trainer.id) {
+                <tr>
+                    <td>{{trainer.firstName}}</td>
+                    <td>{{trainer.lastName}}</td>
+                    <td>{{statusEnum[trainer.status]}}</td>
+                    <td>
+                        <button>🔎</button>
+                        <button (click)="delete(trainer.id)">🗑</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <app-add-trainer></app-add-trainer>
+
+</section>
