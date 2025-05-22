@@ -1,0 +1,19 @@
+
+<section class="section">
+    
+    <div class="container">
+        <input [(ngModel)]="pNom" type="text" placeholder="Nom">
+        <input [(ngModel)]="pPrice" type="text" placeholder="Prix">
+        <input [(ngModel)]="pImg" type="text" placeholder="Url Image">
+        <button (click)="ajouter()" [disabled]="!pNom || !pImg || pPrice <= 0">Ajouter</button>
+    </div>
+    <div class="listproduits">
+        @for (produit of produits; track produit.id) {
+            <app-product-card [produit]="produit" (onDelete)="productToDelete($event)" ></app-product-card>
+
+        }@empty {
+            <h3>Liste de produits vide</h3>
+        }
+
+    </div>
+</section>

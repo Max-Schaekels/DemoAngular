@@ -1,0 +1,11 @@
+
+
+@if (produit) {
+    <div class="card">
+        <img [src]="produit.image" [alt]="'image de ' + produit.name">
+        <p> {{produit.name}}</p>
+        <p> {{produit.price}}€</p>
+        <p (click)="delete()"> 🗑 </p>
+
+    </div>
+}
