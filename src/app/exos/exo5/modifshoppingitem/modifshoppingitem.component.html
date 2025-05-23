@@ -1,12 +1,12 @@
     <div class="bottom-card">
         @for (shoppingItem of shoppingItems; track shoppingItem.id) {
             <div>
-                <input type="checkbox">
+                <input type="checkbox" (change)="achat(shoppingItem)">
                 <p>{{shoppingItem.name}}</p>
-                <button>-</button>
+                <button (click)="diminuerQuantity(shoppingItem)">-</button>
                 <p>{{shoppingItem.quantity}}</p>
-                <button>+</button>
-                <button>🗑</button>
+                <button (click)="addQuantity(shoppingItem)">+</button>
+                <button (click)="delete(shoppingItem.id)">🗑</button>
             </div>
 
         }

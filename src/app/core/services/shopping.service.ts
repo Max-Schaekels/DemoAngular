@@ -44,4 +44,19 @@ export class ShoppingService {
       this._shoppingItems = this._shoppingItems.filter(sp => sp !== shoppingItem);
     }
   }
+
+  delete(id : number){
+    this._shoppingItems = this._shoppingItems.filter(sp => sp.id !== id);
+  }
+
+  achat(shoppingItem : ShoppingItem) : void{
+    if (shoppingItem.bought=== false) {
+      
+      shoppingItem.bought = true;
+    }else{
+      shoppingItem.bought = false;
+    }
+    console.log(shoppingItem);
+    
+  }
 }

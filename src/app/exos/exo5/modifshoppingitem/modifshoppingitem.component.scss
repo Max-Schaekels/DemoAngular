@@ -1,6 +1,6 @@
-.demo {
-  padding: 2rem;
-  background-color: #fdfdfd;
+// .demo {
+//   padding: 2rem;
+//   background-color: #fdfdfd;
 
   h1 {
     font-size: 2rem;
@@ -43,7 +43,7 @@
         padding: 0.4rem 0.8rem;
         border-radius: 6px;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 1rem; 
         transition: background-color 0.2s;
 
         &:hover {
@@ -60,4 +60,4 @@
       }
     }
   }
-}
+// }
