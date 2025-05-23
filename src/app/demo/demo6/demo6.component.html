@@ -1,0 +1,36 @@
+<section class="demo">
+    <h1>Gestion des utilisateurs très sécurisée (🤡)</h1>
+    <a class="btn" routerLink="/demo6/add">Ajouter un utilisateur</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (user of userList; track user.id) {
+                <tr>
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.role}}</td>
+                    <td>
+                        <button class="btn">✒</button>
+                        <button class="btn">🔎</button>
+                        <button class="btn">🗑</button>
+
+                    </td>
+                </tr>
+            }@empty {
+                <tr>
+                    <td colspan="5">Pas d'utilisateurs</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</section>

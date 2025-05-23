@@ -1,0 +1,106 @@
+<section class="demo">
+    <h1>Ajouter un nouvel utilisateur :</h1>
+    <a routerLink="/demo6">Retour à la liste des utilisateurs</a>
+
+    <form [formGroup]="createForm" (ngSubmit)="add()">
+        <div class="form-group">
+            <label for="firstname">Prénom</label>
+            <input formControlName="firstname" id="firstname" type="text">
+            @if(createForm.get(('firstname'))?.touched && createForm.get(('firstname'))?.errors?.['required']){
+            <span class="error-msg">Ce champs est requis</span>
+            }
+            @if(createForm.get(('firstname'))?.errors?.['maxlength']){
+            <span class="error-msg">Max 100 caractères</span>
+
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="lastname">Nom</label>
+            <input formControlName="lastname" id="lastname" type="text">
+            @if(createForm.get(('lastname'))?.touched && createForm.get(('lastname'))?.errors?.['required']){
+            <span class="error-msg">Ce champs est requis</span>
+            }
+            @if(createForm.get(('lastname'))?.errors?.['maxlength']){
+            <span class="error-msg">Max 100 caractères</span>
+
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="birthdate">Date de Naissance</label>
+            <input formControlName="birthdate" id="birthdate" type="date">
+        </div>
+
+        <div class="form-group">
+            <label for="credits">Nombre de crédits</label>
+            <input formControlName="credits" id="credits" type="number">
+            @if(createForm.get(('credits'))?.touched && createForm.get(('credits'))?.errors?.['required']){
+            <span class="error-msg">Ce champs est requis</span>
+            }
+            @if(createForm.get(('credits'))?.errors?.['min'] || createForm.get(('credits'))?.errors?.['max']){
+            <span class="error-msg">Min 0 et max 9 999 999</span>
+
+            }
+
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input formControlName="email" id="email" type="email">
+            @if(createForm.get(('email'))?.touched && createForm.get(('email'))?.errors?.['required']){
+            <span class="error-msg">Ce champs est requis</span>
+            }
+            @if(createForm.get(('email'))?.errors?.['email']){
+            <span class="error-msg">Mauvais format de mail</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">Mot de passe</label>
+            <input formControlName="password" id="pwd" type="password">
+            @if(createForm.get('password')?.touched && createForm.get('password')?.errors?.['required']){
+            <span class="error-msg">Ce champs est requis</span>
+            }
+            @if(createForm.get('password')?.touched && createForm.get('password')?.errors?.['pattern']){
+            <span class="error-msg">Votre mot de passe doit contenir au moins 8 caractères dont une minuscule, une majuste, un chiffre et un caractère spécial</span>
+            }
+
+        </div>
+
+        <div class="form-group">
+            <label for="confirmpwd">Confirmer le mot de passe</label>
+            <input formControlName="confirm" id="confirmpwd" type="password">
+            @if(createForm.get(('confirm'))?.touched && createForm.get(('confirm'))?.errors?.['required']){
+            <span class="error-msg">Ce champs est requis</span>
+            }
+            @if(createForm.errors?.['checkpassword']){
+                <span>Les mots de passes doivent être identique</span>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            <input formControlName="role" id="role" type="text">
+            @if(createForm.get(('role'))?.touched && createForm.get(('role'))?.errors?.['required']){
+            <span class="error-msg">Ce champs est requis</span>
+            }
+            @if (createForm.get('role')?.errors?.['role']) {
+                <span>Le role doit etre Admin ou User</span>
+            }
+        </div>
+
+        <div>
+            <input formControlName="conditions" id="conditions" type="checkbox">
+            <label for="conditions">Oui j'accepte toutes les conditions d'utilisation.</label>@if(createForm.get(('conditions'))?.touched && createForm.get(('conditions'))?.errors?.['required']){
+            <span class="error-msg">Accepte !!</span>
+            }
+        </div>
+
+        <div>
+            <!-- [disabled]="createForm.invalid"  -->
+            <button  type="submit" class="btn">Envoyer</button>
+        </div>
+
+    </form>
+</section>
