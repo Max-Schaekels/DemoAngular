@@ -1,0 +1,79 @@
+<section class="demo">
+    <h1>Ajouter une tâche</h1>
+    <a routerLink="/exo6">Retour à la liste des tâches</a>
+
+    <form [formGroup]="createForm" (ngSubmit)="add()">
+
+        <div class="form-group">
+            <label for="name">Nom</label>
+            <input formControlName="name" id="name" type="text" />
+            @if(createForm.get('name')?.touched && createForm.get('name')?.errors?.['required']){
+            <span class="error-msg">Ce champ est requis</span>
+            }
+            @if(createForm.get('name')?.errors?.['maxlength']){
+            <span class="error-msg">Max 100 caractères</span>
+            }
+        </div>
+
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input formControlName="description" id="description" type="text" />
+        </div>
+
+
+        <div class="form-group">
+            <label for="status">Statut (À faire / Terminée)</label>
+            <input formControlName="status" id="status" type="text" />
+            @if(createForm.get('status')?.touched && createForm.get('status')?.errors?.['required']){
+            <span class="error-msg">Ce champ est requis</span>
+            }
+            @if(createForm.get('status')?.errors?.['status']){
+            <span class="error-msg">Statut invalide (utilisez 'À faire' ou 'Terminée')</span>
+            }
+        </div>
+
+
+        <div class="form-group">
+            <label for="urgence">Urgence (Urgent / Normal)</label>
+            <input formControlName="urgence" id="urgence" type="text" />
+            @if(createForm.get('urgence')?.touched && createForm.get('urgence')?.errors?.['required']){
+            <span class="error-msg">Ce champ est requis</span>
+            }
+            @if(createForm.get('urgence')?.errors?.['urgence']){
+            <span class="error-msg">Urgence invalide (utilisez 'Urgent' ou 'Normal')</span>
+            }
+        </div>
+
+
+        <div class="form-group">
+            <label for="userFirstName">Prénom de l'utilisateur</label>
+            <input formControlName="userFirstName" id="userFirstName" type="text" />
+            @if(createForm.get('userFirstName')?.touched && createForm.get('userFirstName')?.errors?.['required']){
+            <span class="error-msg">Ce champ est requis</span>
+            }
+        </div>
+
+
+        <div class="form-group">
+            <label for="startDate">Date de début</label>
+            <input formControlName="startDate" id="startDate" type="date" />
+            @if(createForm.get('startDate')?.touched && createForm.get('startDate')?.errors?.['required']){
+            <span class="error-msg">Ce champ est requis</span>
+            }
+        </div>
+
+
+        <div class="form-group">
+            <label for="endDate">Date de fin (facultatif)</label>
+            <input formControlName="endDate" id="endDate" type="date" />
+        </div>
+        @if(createForm.errors?.['endBeforeStart']){
+        <span class="error-msg">La date de fin doit être postérieure à la date de début</span>
+        }
+
+        <div>
+            <button type="submit" [disabled]="createForm.invalid" class="btn">Ajouter la tâche</button>
+        </div>
+    </form>
+</section>

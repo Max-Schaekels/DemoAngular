@@ -14,6 +14,10 @@ import { Demo6Component } from './demo/demo6/demo6.component';
 import { AddUserComponent } from './demo/demo6/add-user/add-user.component';
 import { NotfoundComponent } from './core/notfound/notfound.component';
 import { DetailsUserComponent } from './demo/demo6/details-user/details-user.component';
+import { Exo6Component } from './exos/exo6/exo6.component';
+import { AddTacheComponent } from './exos/exo6/add-tache/add-tache.component';
+import { DetailsTacheComponent } from './exos/exo6/details-tache/details-tache.component';
+import { EditTacheComponent } from './exos/exo6/edit-tache/edit-tache.component';
 
 export const routes: Routes = [
     // On indique que pour l'url localhost:4200/demo1 il faudra charger le composant demo1 dans 
@@ -30,6 +34,10 @@ export const routes: Routes = [
     {path : 'exo3', component : Exo3Component},
     {path : 'exo4', component : Exo4Component},
     {path : 'exo5', component : Exo5Component},
+    {path : 'exo6', component : Exo6Component},
+    {path : 'exo6/add', component : AddTacheComponent},
+    {path : 'exo6/details/:id', component : DetailsTacheComponent},
+    {path : 'exo6/edit/:id', component : EditTacheComponent},
     {path :'timer',component : TimerComponent},
     {path : '', component : HomeComponent},
 

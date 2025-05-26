@@ -1,0 +1,34 @@
+<section class="demo">
+  <h1>Gestion des tâches à faire 📋</h1>
+  <a class="btn" routerLink="/exo6/add">Ajouter une tâche</a>
+  <table>
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>État</th>
+        <th>Urgence</th>
+        <th>Date de début</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (tache of tacheList; track tache.id) {
+        <tr [class.urgent]="tache.urgence.toLowerCase() === 'urgent'">
+          <td>{{ tache.name }}</td>
+          <td>{{ tache.status  }}</td>
+          <td>{{ tache.urgence }}</td>
+          <td>{{ tache.startDate | date: 'dd/MM/yyyy' }}</td>
+          <td>
+            <a routerLink="/exo6/edit/{{ tache.id }}" class="btn">✒</a>
+            <a routerLink="/exo6/details/{{ tache.id }}" class="btn">🔎</a>
+            <button (click)="delete(tache.id)" class="btn">🗑</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="5">Pas de tâches à faire</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>

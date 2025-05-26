@@ -1,0 +1,15 @@
+<section class="demo">
+  <h1>Détails de la tâche {{ id }}</h1>
+
+  <a routerLink="/exo6">Retour à la liste des tâches</a>
+
+  @if (tache) {
+    <h2>{{ tache.name }}</h2>
+    <p><span class="label">Description :</span> {{ tache.description }}</p>
+    <p><span class="label">Statut :</span> {{ tache.status }}</p>
+    <p><span class="label">Urgence :</span> {{ tache.urgence }}</p>
+    <p><span class="label">Utilisateur :</span> {{ tache.userFirstName }}</p>
+    <p><span class="label">Date de début :</span> {{ tache.startDate | date : 'dd/MM/yyyy' }}</p>
+    <p><span class="label">Date de fin :</span> {{ tache.endDate | date : 'dd/MM/yyyy' }}</p>
+  }
+</section>
