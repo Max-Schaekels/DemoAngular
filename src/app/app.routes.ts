@@ -12,6 +12,8 @@ import { Demo5Component } from './demo/demo5/demo5.component';
 import { Exo5Component } from './exos/exo5/exo5.component';
 import { Demo6Component } from './demo/demo6/demo6.component';
 import { AddUserComponent } from './demo/demo6/add-user/add-user.component';
+import { NotfoundComponent } from './core/notfound/notfound.component';
+import { DetailsUserComponent } from './demo/demo6/details-user/details-user.component';
 
 export const routes: Routes = [
     // On indique que pour l'url localhost:4200/demo1 il faudra charger le composant demo1 dans 
@@ -22,10 +24,18 @@ export const routes: Routes = [
     {path : 'demo5', component : Demo5Component},
     {path : 'demo6', component : Demo6Component},
     {path : 'demo6/add', component : AddUserComponent},
+    {path : 'demo6/details/:id', component : DetailsUserComponent},
+
     {path : 'exo1', component : Exo1Component},
     {path : 'exo3', component : Exo3Component},
     {path : 'exo4', component : Exo4Component},
     {path : 'exo5', component : Exo5Component},
     {path :'timer',component : TimerComponent},
-    {path : '', component : HomeComponent}
+    {path : '', component : HomeComponent},
+
+    {path : 'notfound', component : NotfoundComponent},
+
+    //Attention ce chemin doit être à la fin puisque le ** signifie toutes les routes non déclarées
+    {path : '**', redirectTo : '/notfound'}
+
 ];

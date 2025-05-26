@@ -13,6 +13,11 @@ export class UserService {
   getAll() : User[] {
     return this._userList;
   }
+
+  GetById(id : number) : User | undefined{
+    return this._userList.find(user => user.id === id);
+  }
+
   add(user : User) : void{
     user.id = Math.max(...this._userList.map(user => user.id)) +1 ;
 

@@ -1,0 +1,13 @@
+<section class="demo">
+    <h1>Détail de l'utilisateur possédant l'id {{id}}</h1>
+
+    <a routerLink="/demo6">Retour à la liste des utilisateurs</a>
+
+    @if (user) {
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+        <p>{{ user.birthDate | date : 'dd/MM/yyyy' }}</p>
+        <p>Email : {{user.email}}</p>
+        <p>Nombre de crédits : {{user.credits}}</p>
+        <p>Role : {{ user.role}}</p>
+    }
+</section>
