@@ -1,3 +1,22 @@
+
+
+# DemoAngular
+
+Mini-projet Angular développé dans le cadre d'un apprentissage du framework lors d'une formation en .NEt.
+
+## Objectifs :
+- Comprendre la structure d’un projet Angular
+- Implémenter des composants simples
+- Utiliser le routing et les services
+
+## Technologies utilisées :
+- Angular
+- TypeScript
+- HTML / CSS
+
+## État du projet :
+Projet en cours – démonstration de base
+
 # Demo
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.12.
